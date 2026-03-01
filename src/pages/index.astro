@@ -1,0 +1,44 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import config from "../content/config/config.json";
+import client from "../../tina/__generated__/client";
+import HomePage from "../../tina/pages/HomePage.tsx";
+
+const data = await client.queries.page({ relativePath: "home.mdx" });
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={config.seo.title} description={config.seo.description} />
+  </head>
+  <body class="bg-[#fcfcfc] site-canvas">
+    <Header />
+    <main>
+      <HomePage {...data} client:tina />
+    </main>
+    <Footer />
+
+    <script is:inline>
+      // Reveal Animation Logic
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document.addEventListener("astro:page-load", () => {
+        document
+          .querySelectorAll(".reveal-from-left")
+          .forEach((el) => revealObserver.observe(el));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "seo": {
+    "title": "Global Publishing & Marketing Agency | Kizuna Global Services",
+    "description": "Transform your voice into global success. Kizuna Global Services delivers end-to-end publishing, marketing, and distribution solutions that connect US authors and brands with worldwide audiences.",
+    "siteOwner": "Kizuna Global Services"
+  },
+  "nav": [
+    {
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "title": "About",
+      "link": "/about"
+    },
+    {
+      "title": "Marketing",
+      "link": "/services"
+    },
+    {
+      "title": "Publishing",
+      "link": "/publishing"
+    },
+    {
+      "title": "Portfolio",
+      "link": "/portfolio"
+    },
+    {
+      "title": "Contact",
+      "link": "/contact"
+    }
+  ],
+  "contactLinks": []
+}

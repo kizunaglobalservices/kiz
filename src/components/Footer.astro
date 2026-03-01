@@ -1,0 +1,85 @@
+---
+const currentYear = new Date().getFullYear();
+import config from "../content/config/config.json";
+---
+
+<footer class="bg-navy text-white py-20 relative z-10">
+  <div
+    class="container mx-auto px-6 grid md:grid-cols-3 gap-16 border-b border-slate-800 pb-16"
+  >
+    <div>
+      <div class="flex items-center space-x-3 mb-6 cursor-pointer">
+        <span
+          class="text-lg font-serif font-bold tracking-widest uppercase text-white"
+          >Kizuna Global</span
+        >
+      </div>
+      <p class="text-slate-400 text-xs leading-relaxed max-w-xs">
+        Elevating creators through strategic publishing and global marketing
+        solutions since 2026.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-8">
+      <div>
+        <h5
+          class="text-gold font-bold uppercase text-[12px] tracking-[0.2em] mb-6"
+        >
+          Explore
+        </h5>
+        <ul class="space-y-3 text-[12px] text-slate-400">
+          {
+            config.nav.map((item) => (
+              <li>
+                <a href={item.link} class="hover:text-white transition-colors">
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h5
+          class="text-gold font-bold uppercase text-[12px] tracking-[0.2em] mb-6"
+        >
+          Contact
+        </h5>
+        <ul class="space-y-3 text-xs text-slate-400">
+          <li>30 N Gould St STE R Sheridan, WY 82801, USA</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <h5
+        class="text-gold font-bold uppercase text-[10px] tracking-[0.2em] mb-6"
+      >
+        The Global Report
+      </h5>
+      <p class="text-slate-400 text-[12px] mb-4">
+        Insights on the future of international publishing.
+      </p>
+      <div class="flex">
+        <input
+          type="email"
+          placeholder="Email Address"
+          class="bg-slate-800 border-none px-4 py-3 text-xs w-full outline-none focus:ring-1 focus:ring-gold text-white"
+        />
+        <button class="bg-gold px-6 text-navy hover:bg-gold-light">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto px-6 pt-10 text-center">
+    <p class="text-[12px] text-slate-500 font-bold tracking-[0.2em] uppercase">
+      &copy; {currentYear}
+      {config.seo.siteOwner}. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    font-family: var(--font-sans);
+  }
+</style>

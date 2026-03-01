@@ -1,0 +1,92 @@
+---
+import config from "../content/config/config.json";
+---
+
+<header class="fixed w-full z-50 bg-navy text-white shadow-2xl">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-4 cursor-pointer group">
+      <div class="relative flex items-center justify-center">
+        {
+          /* If logo-k.png exists, show it. Otherwise show a placeholder or text-based logo. */
+        }
+        <img
+          src="/logo-k.png"
+          alt="Logo"
+          width="50"
+          onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
+        />
+        <div
+          id="logo-fallback"
+          class="hidden w-12.5 h-12.5 bg-gold rounded-full items-center justify-center text-navy font-bold text-xl"
+        >
+          K
+        </div>
+      </div>
+      <div class="flex flex-col leading-none border-l border-white/10 pl-4">
+        <span class="text-xl font-serif font-bold tracking-widest uppercase"
+          >Kizuna</span
+        >
+        <span class="text-[12px] text-gold tracking-[0.3em] uppercase font-bold"
+          >Global Services</span
+        >
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav
+      class="hidden md:flex space-x-8 text-[12px] font-bold tracking-widest uppercase items-center"
+    >
+      {
+        config.nav.map((item) => (
+          <a href={item.link} class="hover:text-gold transition-colors py-2">
+            {item.title}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-gold text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden bg-navy border-t border-slate-800 p-6 flex-col space-y-4 md:hidden"
+  >
+    {
+      config.nav.map((item) => (
+        <a
+          href={item.link}
+          class="text-white hover:text-gold uppercase text-xs font-bold tracking-widest"
+        >
+          {item.title}
+        </a>
+      ))
+    }
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+  });
+</script>
+
+<style>
+  header {
+    /* Ensure the header font is consistent with the logo */
+    font-family: var(--font-sans);
+  }
+</style>
